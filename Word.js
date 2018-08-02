@@ -11,8 +11,10 @@ var Word = function() {
     "parameters",
     "function",
     "constructor",
-    "for loop"
+    "forloop"
   ];
+  this.numBlanks = [];
+
   //chooses random word from array
   var wordInPlay = this.availableWords[
     Math.floor(Math.random() * availableWords.length)
@@ -22,16 +24,25 @@ var Word = function() {
   this.splitWord = function() {
     //creates variable to hold individual letters (this works.)
     var wordInPlayLetters = wordInPlay.split("");
-    console.log("Word in play: " + wordInPlay);
+    console.log("Word in play letters: " + wordInPlayLetters);
 
     //goes through list of letters and pushes them into the empty array above
     for (var i = 0; i < wordInPlayLetters.length; i++) {
       letterArray.push(wordInPlayLetters[i]);
     }
-    console.log("Letter array: " + letterArray);
-  };
+  }
+
+  this.generateBlanks = function() {
+    for (var j = 0; j < letterArray.length; j ++) {
+      numBlanks.push("__");
+      // numBlanks.push("__")
+    }
+    console.log(numBlanks);
+  }
   splitWord();
+  generateBlanks();
+
 };
-Word();
+
 
 module.exports = Word;
