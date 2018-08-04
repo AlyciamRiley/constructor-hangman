@@ -13,7 +13,10 @@ var Word = function() {
     "constructor",
     "forloop"
   ];
+
+  //only holds blanks
   this.numBlanks = [];
+  this.blanksAndSuccesses = [];
 
   //chooses random word from array
   var wordInPlay = this.availableWords[
@@ -36,7 +39,6 @@ var Word = function() {
     for (var j = 0; j < letterArray.length; j ++) {
       numBlanks.push("__");
     }
-    console.log(numBlanks);
   }
   splitWord();
   generateBlanks();

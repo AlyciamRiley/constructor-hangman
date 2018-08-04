@@ -24,24 +24,36 @@ function start() {
 }
 
 function promptUser() {
-  inquirer.prompt([
-    {
-      name: "guess",
-      type: "input",
-      message: "Guess a letter!"
-    }
-  ]).then(function(answer){
-     var userGuess = answer.guess;
-     console.log("user guess " + userGuess);
-
-    for (var j = 0; j < letterArray.length; j++) {
-      if (userGuess === letterArray[j]) {
-        console.log("it matches!");
-      } else {
-        console.log("error");
+  inquirer
+    .prompt([
+      {
+        name: "guess",
+        type: "input",
+        message: "Guess a letter!"
       }
-    }
-  })
+    ])
+    .then(function(answer) {
+      var userGuess = answer.guess;
+      var letterInWord = false;
+      console.log("user guess " + userGuess);
+
+      for (var j = 0; j < letterArray.length; j++) {
+        if (userGuess === letterArray[j]) {
+          console.log("it matches!");
+          letterInWord = true;
+        }
+      }
+
+      if (letterInWord) {
+        for (var k = 0; k < letterArray.length; k++) {
+          //identified where user guess is in array, now I need to replace that blank.
+          var userGuessIndex = letterArray.indexOf(userGuess);
+          console.log("index var " + userGuessIndex);
+          checkIndices();
+          // console.log("numblanks " + numBlanks);
+        }
+      }
+    });
 }
 
 start();
