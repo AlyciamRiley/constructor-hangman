@@ -6,22 +6,42 @@ var inquirer = require("inquirer");
 // Prompts the user for each guess and keeps track of the user's remaining guesses
 
 function start() {
-    inquirer
-      .prompt({
-        name: "startGame",
-        type: "rawlist",
-        message: "Are you ready to start? ",
-        choices: ["YES", "NO"]
-      })
-      .then(function(answer) {
-        if (answer.startGame == "YES") {
-          Word();
-        }
-        else {
-          console.log("Well what are you waiting for?");
-          start();
-        }
-      });
-  }
-  
-  start();
+  inquirer
+    .prompt({
+      name: "startGame",
+      type: "rawlist",
+      message: "Are you ready to start? ",
+      choices: ["YES", "NO"]
+    })
+    .then(function(answer) {
+      if (answer.startGame == "YES") {
+        Word();
+        promptUser();
+      } else {
+        console.log("Well what are you waiting for?");
+      }
+    });
+}
+
+function promptUser() {
+  inquirer.prompt([
+    {
+      name: "guess",
+      type: "input",
+      message: "Guess a letter!"
+    }
+  ]).then(function(answer){
+     var userGuess = answer.guess;
+     console.log("user guess " + userGuess);
+
+    for (var j = 0; j < letterArray.length; j++) {
+      if (userGuess === letterArray[j]) {
+        console.log("it matches!");
+      } else {
+        console.log("error");
+      }
+    }
+  })
+}
+
+start();
