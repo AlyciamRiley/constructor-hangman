@@ -1,4 +1,4 @@
-
+var Letter = require("./Letter");
 
 var Word = function() {
   //empty array where the individual letters will be
@@ -35,13 +35,7 @@ var Word = function() {
     }
   }
 
-  this.generateBlanks = function() {
-    for (var j = 0; j < letterArray.length; j ++) {
-      numBlanks.push("__");
-    }
-  }
   splitWord();
-  generateBlanks();
 
 };
 

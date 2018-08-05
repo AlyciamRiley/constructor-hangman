@@ -35,7 +35,6 @@ function promptUser() {
     .then(function(answer) {
       var userGuess = answer.guess;
       var letterInWord = false;
-      console.log("user guess " + userGuess);
 
       for (var j = 0; j < letterArray.length; j++) {
         if (userGuess === letterArray[j]) {
@@ -48,9 +47,7 @@ function promptUser() {
         for (var k = 0; k < letterArray.length; k++) {
           //identified where user guess is in array, now I need to replace that blank.
           var userGuessIndex = letterArray.indexOf(userGuess);
-          console.log("index var " + userGuessIndex);
-          checkIndices();
-          // console.log("numblanks " + numBlanks);
+          console.log("index  " + userGuessIndex);
         }
       }
     });
